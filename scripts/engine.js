@@ -40,8 +40,9 @@ Engine.prototype.scene = function() {
 
 /**
  * create new entity
+ * @param {Object} [options] - options for a new entity
  * @return {Entity} entity object
  */
-Engine.prototype.entity = function() {
-  return new Engine.Entity();
+Engine.prototype.entity = function(options) {
+  return new Engine.Entity(options);
 };

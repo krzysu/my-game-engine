@@ -6,6 +6,7 @@
    */
   var Scene = function(name, options) {
     this.name = name || "";
+    this.entities = [];
   };
 
   /**
@@ -14,14 +15,19 @@
    * @return {Entity} entity
    */
   Scene.prototype.add = function(entity) {
-    // body...
+    this.entities.push(entity);
   };
 
   /**
-   * render scene and all entitites
+   * render all entities from this scene
    */
   Scene.prototype.render = function() {
-    // body...
+    var i;
+    var length = this.entities.length;
+
+    for (i = 0; i < length; i++) {
+      this.entities[i].render();
+    };
   };
 
   Engine.Scene = Scene;
