@@ -38,16 +38,9 @@
    * @return {Scene} scene object
    */
   Engine.prototype.scene = function() {
-    return new Engine.Scene();
-  };
-
-  /**
-   * create new entity
-   * @param {Object} [options] - options for a new entity
-   * @return {Entity} entity object
-   */
-  Engine.prototype.entity = function(options) {
-    return new Engine.Entity(options);
+    var scene = new Engine.Scene();
+    scene.ctx = this.ctx;
+    return scene;
   };
 
 })(window);

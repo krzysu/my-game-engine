@@ -28,7 +28,7 @@
     var length = this.entities.length;
 
     for (i = 0; i < length; i++) {
-      this.entities[i].render();
+      this.entities[i].render(this.ctx);
     };
   };
 
