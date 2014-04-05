@@ -10,7 +10,11 @@
   };
 
   Entity.prototype.render = function() {
-    console.log('entity', this.options);
+    //
+  };
+
+  Entity.prototype.step = function() {
+    //
   };
 
   Engine.Entity = Entity;

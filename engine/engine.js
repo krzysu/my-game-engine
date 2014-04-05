@@ -40,6 +40,7 @@
   Engine.prototype.scene = function() {
     var scene = new Engine.Scene();
     scene.ctx = this.ctx;
+    scene.canvas = this.canvas;
     return scene;
   };
 
