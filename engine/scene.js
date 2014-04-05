@@ -1,4 +1,6 @@
-(function() {
+(function(Engine) {
+  'use strict';
+
   /**
    * scene is responsible for grouping and managing entieties
    * @param {String} [name] - id of the scene
@@ -32,4 +34,4 @@
 
   Engine.Scene = Scene;
 
-})();
+})(Engine);

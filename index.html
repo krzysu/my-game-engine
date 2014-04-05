@@ -9,28 +9,14 @@
 <body>
   <canvas id="game-canvas"></canvas>
 
-  <script type="text/javascript" src="scripts/engine.js"></script>
-  <script type="text/javascript" src="scripts/scene.js"></script>
-  <script type="text/javascript" src="scripts/entity.js"></script>
+  <script type="text/javascript" src="engine/engine.js"></script>
+  <script type="text/javascript" src="engine/scene.js"></script>
+  <script type="text/javascript" src="engine/entity.js"></script>
+
+  <script type="text/javascript" src="game/game.js"></script>
+  <script type="text/javascript" src="game/ball.js"></script>
   <script>
-    (function() {
-      // TODO: move below code to game.js
-      // init canvas
-      var engine = new Engine('game-canvas');
-
-      // init scene and add entities
-      var level1 = engine.scene('level1');
-
-      var ball = engine.entity({
-        x: engine.canvas.width/2,
-        y: engine.canvas.height/2
-      });
-
-      level1.add(ball);
-      level1.render();
-
-    })();
-
+    Game.init();
   </script>
 </body>
 </html>

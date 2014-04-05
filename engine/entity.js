@@ -1,4 +1,6 @@
-(function() {
+(function(Engine) {
+  'use strict';
+
   /**
    * entity represents single object in a game
    * @param {Object} [options]
@@ -13,4 +15,4 @@
 
   Engine.Entity = Entity;
 
-})();
+})(Engine);
