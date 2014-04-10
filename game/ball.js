@@ -1,12 +1,16 @@
 (function(Game, Engine) {
   'use strict';
 
-  var Ball = function(options) {
+  var Ball = function(engine, options) {
     // this.options = options;
+    this.engine = engine;
     this.x = options.x;
     this.y = options.y;
-    this.radius = options.radius || 50;
-    this.speed = 200;
+    this.radius = options.radius || 36;
+    this.w = this.radius * 2;
+    this.h = this.radius * 2;
+    this.vx = 400;
+    this.vy = 400;
   };
 
   // inherit from Entity class
@@ -21,8 +25,25 @@
   };
 
   Ball.prototype.step = function(dt) {
-    this.x += this.speed * dt;
-    this.y += this.speed * dt;
+    this.x += this.vx * dt;
+    this.y += this.vy * dt;
+
+    // right border collision
+    if(this.x + this.w/2 > this.engine.canvas.width) {
+      this.vx = -Math.abs(this.vx);
+    }
+    // left border collision
+    if(this.x - this.w/2 < 0) {
+      this.vx = Math.abs(this.vx);
+    }
+    // bottom border collision
+    if(this.y + this.h/2 > this.engine.canvas.height) {
+      this.vy = -Math.abs(this.vy);
+    }
+    // top border collision
+    if(this.y - this.h/2 < 0) {
+      this.vy = Math.abs(this.vy);
+    }
   };
 
   Game.Ball = Ball;

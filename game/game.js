@@ -10,12 +10,12 @@
     // init scene and add entities
     var level1 = engine.scene('level1');
 
-    var ball = new Game.Ball({
+    var ball = new Game.Ball(engine, {
       x: engine.canvas.width/2,
       y: engine.canvas.height/2
     });
 
-    var paddle = new Game.Paddle({
+    var paddle = new Game.Paddle(engine, {
       x: engine.canvas.width/2,
       y: engine.canvas.height - 100
     });

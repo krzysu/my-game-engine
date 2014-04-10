@@ -1,7 +1,8 @@
 (function(Game, Engine) {
   'use strict';
 
-  var Paddle = function(options) {
+  var Paddle = function(engine, options) {
+    this.engine = engine;
     this.cx = options.x;
     this.cy = options.y;
     this.w = 200;
