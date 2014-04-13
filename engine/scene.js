@@ -9,6 +9,7 @@
   var Scene = function(name, options) {
     this.name = name || "";
     this.entities = [];
+    this.frameTimeLimit = 60;
   };
 
   /**
@@ -63,6 +64,7 @@
       window.requestAnimationFrame(gameLoopCallbackWrapper);
 
       var dt = now - that.lastGameLoopFrame;
+      if(dt > that.frameTimeLimit) { dt = that.frameTimeLimit; }
       callback.apply(that, [dt/1000]);
       that.lastGameLoopFrame = now;
     };
