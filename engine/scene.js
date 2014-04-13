@@ -77,6 +77,10 @@
     window.requestAnimationFrame(gameLoopCallbackWrapper);
   };
 
+  /**
+   * check collision of all entities, one by one
+   * and set up entity.collisionObj value for each entity
+   */
   Scene.prototype.checkCollision = function() {
     var i, j, current, checked;
     var length = this.entities.length;
@@ -91,20 +95,36 @@
           current.collisionObj[checked.id] = {};
         }
 
-        current.collisionObj[checked.id].collide = this.collide(current, checked);
+        current.collisionObj[checked.id] = this.collide(current, checked);
       }
     }
   };
 
+  /**
+   * check collision of two provided objects
+   * @param  {Entity} object1
+   * @param  {Entity} object2
+   * @return {Object} collisionObj
+   *
+   * collisionObj = {
+   *   collide: true/false,
+   *   side: 'top/bottom/left/right/null'
+   * }
+   */
   Scene.prototype.collide = function(object1, object2) {
+    var collisionObj = {};
+
     if(object1.x < object2.x + object2.w
       && object1.x + object1.w  > object2.x
       && object1.y < object2.y + object2.h
       && object1.y + object1.h > object2.y) {
-        // debugger;
-        return true;
+        collisionObj.collide = true;
     }
-    return false;
+    else {
+      collisionObj.collide = false;
+    }
+
+    return collisionObj;
   };
 
   Engine.Scene = Scene;
