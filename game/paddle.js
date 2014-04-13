@@ -29,7 +29,7 @@
 
   // Paddle methods
   Paddle.prototype.render = function(ctx) {
-    ctx.fillStyle = "#9DE51A";
+    ctx.fillStyle = "#7F3469";
     ctx.fillRect(this.x, this.y, this.w, this.h);
   };
 

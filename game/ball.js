@@ -2,17 +2,20 @@
   'use strict';
 
   var Ball = function(engine, options) {
-    // this.options = options;
+    if (typeof options === "undefined") {
+      options = {};
+    }
+
     this.engine = engine;
     this.id = options.id || "ball";
-    this.cx = options.x;
-    this.cy = options.y;
+    this.cx = options.x || this.engine.canvas.width/2;
+    this.cy = options.y || this.engine.canvas.height/2;
     this.radius = options.radius || 36;
     this.w = this.radius * 2;
     this.h = this.radius * 2;
     this.vx = options.vx || 400;
     this.vy = options.vy || 400;
-    this.color = options.color || "#9DE51A";
+    this.color = options.color || "yellow";
     this.initialColor = this.color;
 
     this.updateCoordinates();

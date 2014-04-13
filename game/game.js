@@ -10,35 +10,27 @@
     // init scene and add entities
     var level1 = engine.scene('level1');
 
-    var ball = new Game.Ball(engine, {
-      x: engine.canvas.width/2,
-      y: engine.canvas.height/2,
-      color: "#ff0000"
-    });
+    var ball = new Game.Ball(engine);
 
     var ball2 = new Game.Ball(engine, {
-      x: engine.canvas.width/2,
-      y: engine.canvas.height/2,
       id: "ball2",
       vx: -400,
       vy: -400,
-      color: "#00ffff"
+      color: "#FFABE3"
     });
 
     var ball3 = new Game.Ball(engine, {
-      x: engine.canvas.width/2,
-      y: engine.canvas.height/2,
       id: "ball3",
       vx: 600,
-      vy: -600
+      vy: -600,
+      color: "#FF1CBA"
     });
 
     var ball4 = new Game.Ball(engine, {
-      x: engine.canvas.width/2,
-      y: engine.canvas.height/2,
       id: "ball4",
       vx: -500,
-      vy: 500
+      vy: 500,
+      color: "#7F3469"
     });
 
     var paddle = new Game.Paddle(engine, {
