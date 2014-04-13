@@ -35,7 +35,7 @@
 
     var paddle = new Game.Paddle(engine, {
       x: engine.canvas.width/2,
-      y: engine.canvas.height - 100
+      y: engine.canvas.height - 50
     });
 
     level1.add(ball);

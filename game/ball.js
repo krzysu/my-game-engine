@@ -38,32 +38,36 @@
   };
 
   Ball.prototype.step = function(dt) {
-    if(typeof this.collisionObj['paddle'] !== "undefined" && this.collisionObj['paddle'].collide === true) {
+    var colPaddle = this.collisionObj['paddle'];
+    if(typeof colPaddle !== "undefined" && colPaddle.collide === true) {
       this.color = "#ffffff";
+
+      this.vy = -this.vy;
+      // this.vx = -this.vx;
     }
     else {
       this.color = this.initialColor;
+
+      // right border collision
+      if(this.cx + this.w/2 > this.engine.canvas.width) {
+        this.vx = -Math.abs(this.vx);
+      }
+      // left border collision
+      if(this.cx - this.w/2 < 0) {
+        this.vx = Math.abs(this.vx);
+      }
+      // bottom border collision
+      if(this.cy + this.h/2 > this.engine.canvas.height) {
+        this.vy = -Math.abs(this.vy);
+      }
+      // top border collision
+      if(this.cy - this.h/2 < 0) {
+        this.vy = Math.abs(this.vy);
+      }
     }
 
     this.cx += this.vx * dt;
     this.cy += this.vy * dt;
-
-    // right border collision
-    if(this.cx + this.w/2 > this.engine.canvas.width) {
-      this.vx = -Math.abs(this.vx);
-    }
-    // left border collision
-    if(this.cx - this.w/2 < 0) {
-      this.vx = Math.abs(this.vx);
-    }
-    // bottom border collision
-    if(this.cy + this.h/2 > this.engine.canvas.height) {
-      this.vy = -Math.abs(this.vy);
-    }
-    // top border collision
-    if(this.cy - this.h/2 < 0) {
-      this.vy = Math.abs(this.vy);
-    }
 
     this.updateCoordinates();
   };

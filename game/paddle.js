@@ -12,7 +12,7 @@
     this.id = "paddle";
     this.cx = options.x;
     this.cy = options.y;
-    this.w = 200;
+    this.w = this.engine.canvas.width/3;
     this.h = 50;
     this.speed = 800;
     this.newX = null;

@@ -108,7 +108,7 @@
    *
    * collisionObj = {
    *   collide: true/false,
-   *   side: 'top/bottom/left/right/null'
+   *   obj: Entity // entity that colide
    * }
    */
   Scene.prototype.collide = function(object1, object2) {
@@ -119,6 +119,7 @@
       && object1.y < object2.y + object2.h
       && object1.y + object1.h > object2.y) {
         collisionObj.collide = true;
+        collisionObj.obj = object2;
     }
     else {
       collisionObj.collide = false;
