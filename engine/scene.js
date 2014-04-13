@@ -38,9 +38,14 @@
     this.clear();
 
     for (i = 0; i < length; i++) {
+      if(typeof this.entities[i].collisionObj === "undefined") {
+        this.entities[i].collisionObj = {};
+      }
       this.entities[i].step(dt);
       this.entities[i].render(this.ctx);
     };
+
+    this.checkCollision();
   };
 
   /**
@@ -70,6 +75,36 @@
     };
 
     window.requestAnimationFrame(gameLoopCallbackWrapper);
+  };
+
+  Scene.prototype.checkCollision = function() {
+    var i, j, current, checked;
+    var length = this.entities.length;
+
+    // check combination of all entities
+    for (i = 0; i < length; i++) {
+      for (j = i + 1; j < length; j++) {
+        current = this.entities[i];
+        checked = this.entities[j];
+
+        if(typeof current.collisionObj[checked.id] === "undefined") {
+          current.collisionObj[checked.id] = {};
+        }
+
+        current.collisionObj[checked.id].collide = this.collide(current, checked);
+      }
+    }
+  };
+
+  Scene.prototype.collide = function(object1, object2) {
+    if(object1.x < object2.x + object2.w
+      && object1.x + object1.w  > object2.x
+      && object1.y < object2.y + object2.h
+      && object1.y + object1.h > object2.y) {
+        // debugger;
+        return true;
+    }
+    return false;
   };
 
   Engine.Scene = Scene;

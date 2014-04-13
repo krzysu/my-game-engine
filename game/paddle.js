@@ -9,6 +9,7 @@
 
   var Paddle = function(engine, options) {
     this.engine = engine;
+    this.id = "paddle";
     this.cx = options.x;
     this.cy = options.y;
     this.w = 200;
@@ -64,8 +65,8 @@
   }
 
   Paddle.prototype.updateCoordinates = function() {
-    this.x = this.cx - this.w/2;
-    this.y = this.cy - this.h/2;
+    this.x = Math.floor(this.cx - this.w/2);
+    this.y = Math.floor(this.cy - this.h/2);
   };
 
   Paddle.prototype.onMouseClick = function(e) {
