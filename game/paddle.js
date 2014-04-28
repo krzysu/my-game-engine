@@ -37,8 +37,8 @@
 
     // check range around destination point
     if(this.newX - this.speed * dt < this.cx && this.newX + this.speed * dt > this.cx) {
-      this.newX = null
-    };
+      this.newX = null;
+    }
 
     // check if we should move to newX
     if(this.newX !== null && this.newX !== this.cx && this.newX > this.cx) {
@@ -62,7 +62,7 @@
     }
 
     this.updateCoordinates();
-  }
+  };
 
   Paddle.prototype.updateCoordinates = function() {
     this.x = Math.floor(this.cx - this.w/2);
@@ -79,4 +79,4 @@
 
   Game.Paddle = Paddle;
 
-})(Game, Engine);
+}(Game, Engine));
